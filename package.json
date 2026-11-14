@@ -19,8 +19,13 @@
     "monochrome",
     "portfolio"
   ],
-  "repository": { "type": "git", "url": "git+https://github.com/sh-sunfaded/contrast-css.git" },
-  "bugs": { "url": "https://github.com/sh-sunfaded/contrast-css/issues" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sh-sunfaded/contrast-css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sh-sunfaded/contrast-css/issues"
+  },
   "license": "MIT",
   "author": "Kennedy",
   "sideEffects": true
