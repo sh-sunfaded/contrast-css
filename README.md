@@ -78,7 +78,7 @@ CDN(公開後):
 
 ## 出現演出(省略JS)
 
-`.ct-reveal` はCSSのみでは動かないので、必要なら次のスニペットを `<script>` に写す。。しきい値0.15・一度きりで、`prefers-reduced-motion` にもCSS側で対応済み。
+`.ct-reveal` はCSSのみでは動かないので、必要なら次のスニペットを `<script>` に写す。しきい値0.15・一度きりで、`prefers-reduced-motion` にもCSS側で対応済み。
 
 ```js
 const io = new IntersectionObserver(function (entries) {
