@@ -1,0 +1,25 @@
+{
+  "name": "contrast-css",
+  "version": "0.1.0",
+  "description": "Zero-dependency CSS library of the monochrome contrast template. Pure white/black paper tokens, thick rules, inversion-based emphasis, 33 .ct-* classes. No border-radius, no shadows, no gradients.",
+  "main": "contrast.css",
+  "style": "contrast.css",
+  "exports": {
+    ".": "./contrast.css",
+    "./css": "./contrast.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "contrast.css"
+  ],
+  "keywords": [
+    "css",
+    "design-system",
+    "black-and-white",
+    "monochrome",
+    "portfolio"
+  ],
+  "license": "MIT",
+  "author": "Kennedy",
+  "sideEffects": true
+}

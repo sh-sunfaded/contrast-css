@@ -1,0 +1,364 @@
+@charset "UTF-8";
+
+/* ── 0. トークン ───────────────────────────────────────── */
+
+:root {
+    --ct-serif: ui-serif, Georgia, "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --ct-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+    /* 既定トークンは白紙面(紙面クラスを使わない部分の安全網) */
+    --ct-bg: #ffffff;
+    --ct-ink: #000000;
+    --ct-sub: rgba(0, 0, 0, 0.6);
+    --ct-line: rgba(0, 0, 0, 0.4);
+    --ct-inv-bg: #000000;
+    --ct-inv-ink: #ffffff;
+}
+
+/* 紙面 — 白(← bg-white text-black) */
+.ct-paper-white {
+    --ct-bg: #ffffff;
+    --ct-ink: #000000;
+    --ct-sub: rgba(0, 0, 0, 0.6);
+    --ct-line: rgba(0, 0, 0, 0.4);
+    --ct-inv-bg: #000000;
+    --ct-inv-ink: #ffffff;
+    background-color: var(--ct-bg);
+    color: var(--ct-ink);
+}
+
+/* 紙面 — 黒(← bg-black text-white) */
+.ct-paper-black {
+    --ct-bg: #000000;
+    --ct-ink: #ffffff;
+    --ct-sub: rgba(255, 255, 255, 0.6);
+    --ct-line: rgba(255, 255, 255, 0.4);
+    --ct-inv-bg: #ffffff;
+    --ct-inv-ink: #000000;
+    background-color: var(--ct-bg);
+    color: var(--ct-ink);
+}
+
+/* ── 1. レイアウト ─────────────────────────────────────── */
+
+/* ← max-w-4xl mx-auto px-6 */
+.ct-container {
+    max-width: 56rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+}
+
+/* ← py-16 md:py-24 */
+.ct-section {
+    padding-block: 4rem;
+}
+
+/* ← grid md:grid-cols-2 gap-8 */
+.ct-grid-2 {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 48rem) {
+    .ct-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ← grid grid-cols-2 md:grid-cols-4 gap-4 */
+.ct-grid-4 {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 48rem) {
+    .ct-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ── 2. タイポ ─────────────────────────────────────────── */
+
+/* ← font-serif font-black leading-none tracking-tight text-6xl md:text-9xl */
+.ct-h1 {
+    font-family: var(--ct-serif);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    margin: 0;
+}
+
+/* ← font-serif font-black leading-none tracking-tight text-4xl md:text-6xl */
+.ct-h2 {
+    font-family: var(--ct-serif);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    margin: 0;
+}
+
+/* ← font-serif font-black leading-none tracking-tight text-3xl md:text-5xl */
+.ct-h3 {
+    font-family: var(--ct-serif);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-size: clamp(1.875rem, 5vw, 3rem);
+    margin: 0;
+}
+
+/* ← font-mono text-xs tracking-widest(ラベルは英大文字+「 — 」区切り) */
+.ct-label {
+    font-family: var(--ct-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+/* ← font-mono */
+.ct-mono {
+    font-family: var(--ct-mono);
+}
+
+/* ← text-black/60 text-white/60(階調は白黒の不透明度のみ) */
+.ct-sub {
+    color: var(--ct-sub);
+}
+
+/* ← ルビ・数値の類 font-mono text-xs md:text-sm */
+.ct-ruby {
+    font-family: var(--ct-mono);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* ── 3. 罫線 ───────────────────────────────────────────── */
+
+/* ← border-b-4(見出し下の太罫) */
+.ct-rule {
+    border-bottom: 4px solid var(--ct-ink);
+    padding-bottom: 1rem;
+}
+
+/* ← border-4(パネル枠・FACTS/年表の額縁) */
+.ct-frame {
+    border: 4px solid var(--ct-ink);
+    padding: 1.5rem;
+}
+
+/* ← border-2(入力・小ボタン・リスト項目) */
+.ct-outline {
+    border: 2px solid var(--ct-ink);
+    padding: 1rem;
+}
+
+/* ← border-y-4 divide-y-2(上下太罫の1行リスト) */
+.ct-rows {
+    border-top: 4px solid var(--ct-ink);
+    border-bottom: 4px solid var(--ct-ink);
+}
+.ct-rows > * + * {
+    border-top: 2px solid var(--ct-line);
+}
+
+/* ← border-l-4 pl-4(3行ピッチの左太罫) */
+.ct-pitch {
+    border-left: 4px solid var(--ct-ink);
+    padding-left: 1rem;
+}
+
+/* ← 罫の色だけ欲しい場合(border-white/40 等に相当) */
+.ct-lined {
+    border: 2px solid var(--ct-line);
+}
+
+/* ── 4. 反転ブロック(強調は反転で行う) ─────────────────── */
+
+/* ← 強調スパン: 白文の中に bg-black text-white px-2 / 黒文の中に bg-white text-black px-2 */
+.ct-em {
+    background-color: var(--ct-inv-bg);
+    color: var(--ct-inv-ink);
+    padding-inline: 0.5rem;
+    font-weight: 700;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ← タグライン帯: bg-black px-4 py-2 text-white font-bold */
+.ct-band {
+    display: inline-block;
+    background-color: var(--ct-inv-bg);
+    color: var(--ct-inv-ink);
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ← 見出し番号チップ/成果バッジ: px-1.5~2 py-0.5 font-mono text-xs(反転) */
+.ct-chip,
+.ct-badge {
+    display: inline-block;
+    font-family: var(--ct-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    padding: 0.125rem 0.5rem;
+    background-color: var(--ct-inv-bg);
+    color: var(--ct-inv-ink);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ── 5. リスト ─────────────────────────────────────────── */
+
+/* ← 対立ペア: 上下太罫+2px区切りの白黒ペア行 */
+.ct-pairs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 4px solid var(--ct-ink);
+    border-bottom: 4px solid var(--ct-ink);
+}
+.ct-pairs > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0.5rem;
+    font-family: var(--ct-mono);
+    font-size: 0.875rem;
+}
+.ct-pairs > li + li {
+    border-top: 2px solid var(--ct-line);
+}
+
+/* ← FACTSの定義リスト(dt: monoラベル / dd: 太字) */
+.ct-facts {
+    margin: 0;
+}
+.ct-facts > div {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 0.5rem;
+}
+.ct-facts > div + div {
+    border-top: 2px solid var(--ct-line);
+}
+.ct-facts dt {
+    font-family: var(--ct-mono);
+    font-size: 0.75rem;
+    width: 6rem;
+    flex: none;
+    padding-top: 0.25rem;
+}
+.ct-facts dd {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+/* ── 6. 表 ─────────────────────────────────────────────── */
+
+/* ← 枠付き表: 外枠border-4・セルborder-2・見出し下border-b-4 */
+.ct-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 4px solid var(--ct-ink);
+    text-align: left;
+}
+.ct-table th {
+    font-family: var(--ct-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.75rem;
+    border: 2px solid var(--ct-ink);
+    border-bottom: 4px solid var(--ct-ink);
+}
+.ct-table td {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    border: 2px solid var(--ct-ink);
+}
+.ct-table td:first-child {
+    font-weight: 900;
+}
+
+/* ── 7. フォーム ───────────────────────────────────────── */
+
+/* ← border-2 px-3 py-2 font-bold */
+.ct-input,
+.ct-select,
+.ct-textarea {
+    width: 100%;
+    border: 2px solid var(--ct-ink);
+    border-radius: 0;
+    box-shadow: none;
+    background-color: var(--ct-bg);
+    color: var(--ct-ink);
+    padding: 0.5rem 0.75rem;
+    font: inherit;
+    font-weight: 700;
+}
+.ct-textarea {
+    resize: vertical;
+}
+
+/* ← 小ボタン: border-2 hoverで反転 */
+.ct-btn {
+    display: inline-block;
+    border: 2px solid var(--ct-ink);
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    color: var(--ct-ink);
+    font-family: var(--ct-mono);
+    font-size: 0.875rem;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    appearance: none;
+}
+.ct-btn:hover {
+    background-color: var(--ct-ink);
+    color: var(--ct-bg);
+}
+
+/* ← 反転ボタン: bg-black text-white hoverで戻る */
+.ct-btn-solid {
+    display: inline-block;
+    border: 2px solid var(--ct-ink);
+    border-radius: 0;
+    box-shadow: none;
+    background-color: var(--ct-inv-bg);
+    color: var(--ct-inv-ink);
+    font-family: var(--ct-mono);
+    font-size: 0.875rem;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    appearance: none;
+}
+.ct-btn-solid:hover {
+    background-color: var(--ct-bg);
+    color: var(--ct-ink);
+}
+
+/* ← text-red-600 font-bold(エラーのみ例外色) */
+.ct-error {
+    color: #dc2626;
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+/* ── 8. 出現(一度きりのフェード) ───────────────────────── */
+
+/* ← Reveal: IntersectionObserver しきい値0.15・一度きり */
+.ct-reveal {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.ct-reveal.is-shown {
+    opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+    .ct-reveal {
+        transition: none;
+    }
+}
+
