@@ -1,6 +1,6 @@
 # contrast.css
 
-純白 ⇄ 純黒のコントラストだけで組む、依存ゼロ・フレームワーク不問の単体CSSライブラリ。ポートフォリオ・資料系Webアプリ用の「コントラストテンプレート」から抽出した、33個の `.ct-*` クラス。
+純白 ⇄ 純黒のコントラストだけで組む、依存ゼロ・フレームワーク不問の単体CSSライブラリ。自作Webサイトで使用しているポートフォリオ・資料系の「コントラストテンプレート」から抽出した、33個の `.ct-*` クラス。
 
 - 色は `#FFFFFF` / `#000000` のみ(階調は白黒の不透明度のみ)。例外色はエラー赤 `#DC2626` のみ
 - 角丸なし・影なし・グラデーションなし(`border-radius: 0` / `box-shadow: none` を明示)
@@ -25,7 +25,7 @@ CDN(公開後):
 <link rel="stylesheet" href="node_modules/contrast-css/contrast.css">
 ```
 
-紙面を `<section class="ct-paper-white">` と `<section class="ct-paper-black">` で交互に敷くと、トークンが紙面ごとに反転します。黒紙面では反転ブロック(`.ct-em` など)が自動的に白地黒字になります。
+紙面を `<section class="ct-paper-white">` と `<section class="ct-paper-black">` で交互に敷くと、トークンが紙面ごとに反転。黒紙面では反転ブロック(`.ct-em` など)が自動的に白地黒字になる、ね。
 
 ```html
 <section class="ct-paper-white">
@@ -78,7 +78,7 @@ CDN(公開後):
 
 ## 出現演出(省略JS)
 
-`.ct-reveal` はCSSのみでは動かないので、必要なら次のスニペットを `<script>` に写します。しきい値0.15・一度きりで、`prefers-reduced-motion` にもCSS側で対応済みです。
+`.ct-reveal` はCSSのみでは動かないので、必要なら次のスニペットを `<script>` に写す。。しきい値0.15・一度きりで、`prefers-reduced-motion` にもCSS側で対応済み。
 
 ```js
 const io = new IntersectionObserver(function (entries) {
@@ -96,7 +96,7 @@ document.querySelectorAll(".ct-reveal").forEach(function (el) {
 
 ## Tailwind対照(設計出典)
 
-このライブラリはTailwind CSS製テンプレートから抽出しており、主要クラスの元ユーティリティは次の通りです。
+このライブラリはTailwind CSS製テンプレートから抽出しており、主要クラスの元ユーティリティは次の通り。
 
 | contrast.css | 元Tailwindユーティリティ |
 | --- | --- |
