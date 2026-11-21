@@ -1,6 +1,8 @@
-# contrast.css
+# contrast-css
 
 純白 ⇄ 純黒のコントラストだけで組む、依存ゼロ・フレームワーク不問の単体CSSライブラリ。自作Webサイトで使用しているポートフォリオ・資料系の「コントラストテンプレート」から抽出した、33個の `.ct-*` クラス。
+
+## 概要
 
 - 色は `#FFFFFF` / `#000000` のみ(階調は白黒の不透明度のみ)。例外色はエラー赤 `#DC2626` のみ
 - 角丸なし・影なし・グラデーションなし(`border-radius: 0` / `box-shadow: none` を明示)
@@ -126,6 +128,6 @@ document.querySelectorAll(".ct-reveal").forEach(function (el) {
 - 大見出しは serif 極太、ラベル・数値は mono
 - 無限アニメーション禁止(出現は一度きりのフェード `.ct-reveal` のみ)
 
-## License
+## ライセンス
 
-MIT
+MIT([LICENSE](LICENSE)を参照)。
